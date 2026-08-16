@@ -1,0 +1,88 @@
+id: prefill
+term_it: prefill
+term_en: prefill
+term_it_status: borrowed
+aliases:
+  - prefill phase
+  - fase di prefill
+  - prompt processing
+category: inferenza
+tags:
+  - llm
+  - prestazioni
+  - kv-cache
+
+short_def_it: >
+  Fase iniziale dell'inferenza di un modello linguistico, in cui
+  viene elaborato il prompt prima che inizi la generazione dei
+  token della risposta.
+
+long_def_it: >
+  **Cos'è.** Quando un LLM riceve un prompt, prima di generare la
+  risposta deve elaborare i token che lo compongono. Questa fase
+  iniziale è chiamata prefill. Al termine, il modello dispone delle
+  informazioni necessarie per calcolare il primo token della risposta
+  e ha costruito la KV cache che verrà riutilizzata durante la
+  generazione.
+
+  **Come funziona.** Poiché tutti i token del prompt sono già
+  disponibili, il modello può elaborarli in parallelo, sfruttando
+  efficientemente le operazioni matriciali delle GPU. Durante questa
+  elaborazione vengono calcolate e memorizzate nella KV cache le
+  informazioni necessarie al meccanismo di attenzione.
+
+  Dopo il prefill inizia il decode: i nuovi token vengono generati
+  uno alla volta, e le informazioni già memorizzate nella KV cache
+  evitano di dover ricalcolare ogni volta l'intero prompt.
+
+  **Perché conta.** La durata del prefill incide direttamente sul
+  tempo che passa tra l'invio del prompt e l'inizio della risposta,
+  misurato dalla metrica TTFT (Time To First Token). Prompt molto
+  lunghi richiedono quindi più lavoro prima che il modello cominci
+  a rispondere. Nei sistemi di serving più avanzati, prefill e decode
+  possono anche essere gestiti separatamente per ottimizzare le
+  diverse caratteristiche delle due fasi.
+
+example_it: >
+  Se si invia un prompt di 10.000 token, il modello deve prima
+  elaborare quei 10.000 token durante il prefill. Solo dopo può
+  iniziare a generare la risposta. I token successivi vengono poi
+  prodotti uno alla volta durante il decode.
+
+uso_it: >
+  Il prompt caching permette di evitare parte del lavoro di prefill.
+  Se più richieste condividono una parte iniziale già elaborata,
+  per esempio lo stesso system prompt, le informazioni memorizzate
+  nella KV cache possono essere riutilizzate, riducendo il lavoro
+  necessario, la latenza e il costo computazionale.
+
+disambiguation_it: >
+  Nel contesto delle API e del prompt engineering, "prefill" può anche
+  indicare l'inserimento anticipato dell'inizio della risposta
+  dell'assistente. Questo uso è distinto dalla fase di inferenza qui descritta.
+
+sources:
+  - type: arxiv
+    ref: arXiv:2606.17104
+    role: primary
+    note: definizione delle due fasi; prefill compute-bound, decode memory-bound
+  - type: arxiv
+    ref: arXiv:2505.07203
+    role: supporting
+    note: prefill/decode e ruolo della KV cache nei motori di inferenza
+  - type: arxiv
+    ref: arXiv:2504.06319
+    role: supporting
+    note: caratteristiche memory-bound del decode e parallelismo del prefill
+
+related:
+  - decode
+  - kv-cache
+  - ttft
+
+status: draft
+provenance:
+  created_by: human
+  last_modified_by: human
+  human_reviewed: false
+last_reviewed: null

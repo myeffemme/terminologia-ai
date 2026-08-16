@@ -1,0 +1,29 @@
+name: Proposta di nuovo termine
+description: Proponi un termine da aggiungere al catalogo
+title: "[Termine] "
+labels: ["nuovo-termine"]
+body:
+  - type: input
+    id: term
+    attributes:
+      label: Termine
+      description: Indica la forma italiana e, se diversa, quella inglese.
+    validations:
+      required: true
+  - type: textarea
+    id: meaning
+    attributes:
+      label: Significato e contesto
+      description: Spiega brevemente cosa indica e dove viene usato.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Fonti suggerite
+      description: Inserisci fonti primarie o ufficiali, se disponibili.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Note terminologiche
+      description: Segnala traduzioni, alias, ambiguità o termini collegati.

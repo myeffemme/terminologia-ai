@@ -1,0 +1,21 @@
+name: Segnalazione su una voce
+description: Segnala un errore, un'ambiguità o una fonte da aggiornare
+title: "[Segnalazione] "
+labels: ["revisione"]
+body:
+  - type: input
+    id: lemma
+    attributes:
+      label: Lemma interessato
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema riscontrato
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Correzione o fonti proposte

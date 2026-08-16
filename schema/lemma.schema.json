@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/myeffemme/terminologia-ai/schema/lemma.schema.json",
+  "title": "Lemma del Catalogo terminologico AI",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "term_it", "term_en", "term_it_status", "aliases", "category",
+    "tags", "short_def_it", "long_def_it", "sources", "related", "status",
+    "provenance", "last_reviewed"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "term_it": {"type": "string", "minLength": 1},
+    "term_en": {"type": "string", "minLength": 1},
+    "term_it_status": {
+      "enum": ["official", "established", "translated", "borrowed", "proposed"]
+    },
+    "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "category": {"type": "string", "minLength": 1},
+    "tags": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "short_def_it": {"type": "string", "minLength": 20},
+    "long_def_it": {"type": "string", "minLength": 80},
+    "example_it": {"type": "string", "minLength": 20},
+    "uso_it": {"type": "string", "minLength": 20},
+    "note_it": {"type": "string", "minLength": 20},
+    "disambiguation_it": {"type": "string", "minLength": 20},
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "ref", "role", "note"],
+        "properties": {
+          "type": {"enum": ["standard", "normativa", "doi", "arxiv", "paper", "doc_ufficiale", "libro", "blog"]},
+          "ref": {"type": "string", "minLength": 3},
+          "role": {"enum": ["normative", "primary", "supporting", "example"]},
+          "note": {"type": "string", "minLength": 5}
+        }
+      }
+    },
+    "related": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}, "uniqueItems": true},
+    "status": {"enum": ["draft", "verified", "reviewed", "published"]},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created_by", "last_modified_by", "human_reviewed"],
+      "properties": {
+        "created_by": {"type": "string", "minLength": 1},
+        "last_modified_by": {"type": "string", "minLength": 1},
+        "human_reviewed": {"type": "boolean"}
+      }
+    },
+    "last_reviewed": {"type": ["string", "null"], "format": "date"}
+  }
+}

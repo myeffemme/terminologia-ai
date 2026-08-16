@@ -1,0 +1,21 @@
+categories:
+  - id: fondamenti
+    label_it: Fondamenti
+  - id: architetture
+    label_it: Architetture
+  - id: addestramento
+    label_it: Addestramento
+  - id: inferenza
+    label_it: Inferenza
+  - id: modelli-linguistici-generativi
+    label_it: Modelli linguistici e generativi
+  - id: interazione-prompting
+    label_it: Interazione e prompting
+  - id: agenti-tool-use
+    label_it: Agenti e tool use
+  - id: valutazione
+    label_it: Valutazione
+  - id: sicurezza-etica-governance
+    label_it: Sicurezza, etica e governance
+  - id: ecosistema-infrastruttura
+    label_it: Ecosistema e infrastruttura

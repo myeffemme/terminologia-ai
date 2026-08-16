@@ -1,0 +1,75 @@
+id: logit
+term_it: logit
+term_en: logit
+term_it_status: borrowed
+aliases:
+  - pre-softmax activation
+  - raw score
+category: fondamenti
+tags:
+  - inferenza
+  - sampling
+  - reti-neurali
+
+short_def_it: >
+  Punteggio grezzo che un modello assegna a ciascun token possibile
+  prima di trasformare questi punteggi in probabilità.
+
+long_def_it: >
+  **Cos'è.** Quando un modello linguistico deve scegliere il token
+  successivo, assegna un punteggio a ogni token del suo vocabolario.
+  Questi punteggi sono chiamati logit. Un logit può essere positivo
+  o negativo e, preso da solo, non rappresenta una probabilità:
+  indica semplicemente quanto il modello favorisce un token rispetto
+  agli altri.
+
+  **Come funziona.** I logit vengono trasformati in probabilità
+  tramite la funzione softmax. In generale, un token con un logit
+  più alto riceverà una probabilità maggiore. Prima della softmax
+  i logit possono essere modificati, per esempio attraverso la
+  temperatura, rendendo le differenze tra i punteggi più o meno
+  marcate.
+
+  **Perché conta.** I logit costituiscono il passaggio intermedio
+  tra ciò che il modello ha calcolato e la scelta del token da
+  generare. Tecniche come temperatura, top-k e top-p intervengono
+  sui logit o sulle probabilità che ne derivano e influenzano quindi
+  il modo in cui viene scelto il token successivo.
+
+example_it: >
+  Supponiamo che il modello assegni ai token "gatto", "cane" e "casa"
+  logit rispettivamente pari a 4, 2 e -1. Questi numeri non sono
+  probabilità, ma indicano che "gatto" è nettamente favorito rispetto
+  agli altri. La softmax trasformerà poi i tre punteggi in probabilità
+  utilizzabili per scegliere il token successivo.
+
+note_it: >
+  Il termine proviene dalla statistica, dove "logit" indica il
+  logaritmo del rapporto tra una probabilità e il suo complemento
+  (log-odds). Nel deep learning il termine viene comunemente usato
+  per indicare i valori prodotti prima dell'applicazione della softmax.
+
+sources:
+  - type: arxiv
+    ref: arXiv:2402.05201
+    role: supporting
+    note: definizione formale di logit e temperatura nel softmax (eq. 1)
+  - type: arxiv
+    ref: arXiv:2506.07295
+    role: supporting
+    note: logit come attivazione pre-softmax; effetti della temperatura
+  - type: blog
+    ref: machinelearningmastery.com — "How LLMs Choose Their Words"
+    role: example
+    note: trattazione pratica con esempi numerici logit→softmax→sampling
+
+related:
+  - softmax
+  - temperatura
+
+status: draft
+provenance:
+  created_by: human
+  last_modified_by: human
+  human_reviewed: false
+last_reviewed: null
