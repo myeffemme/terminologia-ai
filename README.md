@@ -32,6 +32,8 @@ La build genera rappresentazioni intermedie per sito ed EPUB sotto `build/`, che
 
 Il catalogo parte con due lemmi in bozza: `logit` e `prefill`. I collegamenti a lemmi non ancora presenti sono ammessi come avvisi nelle bozze; diventano errori prima della pubblicazione.
 
+Le decisioni su prodotti, livelli di lettura, neutralità editoriale e primo percorso di sviluppo sono raccolte nel [programma del progetto](docs/project-program.md).
+
 ## Licenza
 
 Contenuti e metadati sono distribuiti secondo [CC BY 4.0](LICENSE), salvo diversa indicazione per materiali citati o collegati. Le fonti restano soggette alle licenze dei rispettivi titolari.
