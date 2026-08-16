@@ -21,7 +21,7 @@ I file YAML in [`entries/`](entries/) sono l'unica fonte canonica dei contenuti.
 Richiede Python 3.11 o successivo.
 
 ```bash
-python -m pip install PyYAML jsonschema
+python -m pip install -r requirements.txt
 python scripts/validate.py
 python scripts/build.py
 ```

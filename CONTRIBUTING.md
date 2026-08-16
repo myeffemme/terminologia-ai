@@ -24,5 +24,5 @@ Le modifiche a `main` passano tramite pull request e controlli automatici. Solo 
 ## Dipendenze
 
 ```bash
-python -m pip install PyYAML jsonschema
+python -m pip install -r requirements.txt
 ```
